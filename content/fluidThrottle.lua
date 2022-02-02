@@ -62,8 +62,8 @@ function Initialise()
   maxCapacity = GetPanelModule(5, 6, "")
   capacityPctLabel = GetPanelModule(0, 4, "Percent:")
   capacityPct = GetPanelModule(5, 4, "")
-  capacityPctLabel = GetPanelModule(0, 2, "Content:")
-  capacityPct = GetPanelModule(5, 2, "")
+  contentLabel = GetPanelModule(0, 2, "Content:")
+  content = GetPanelModule(5, 2, "")
 end
 
 function Update()
@@ -75,7 +75,7 @@ function Update()
 	for _, v in ipairs(storageTanks) do
 		current = current + v.fluidContent
 		max = max + v.maxFluidContent
-		tankContent = v:getFluidType().type.name
+		tankContent = v:getFluidType().name
 	end
 	local pct = (current * 100)/ max
 
@@ -89,7 +89,7 @@ function Update()
 	capacity.text = Round(current, 0, 2)
 	maxCapacity.text = Round(max, 0, 0)
 	capacityPct.text = Round(pct, 0, 2)
-	capacityPct.text = Round(pct, 0, 2)
+  content.text = tankContent
 end
 
 FetchContainers()
