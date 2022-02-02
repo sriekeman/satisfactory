@@ -12,7 +12,7 @@ capacityPctLabel = null
 capacityPct = null
 contentLabel = null
 content = null
-local _containerTypes = {"BigStorage_C","Build_IndustrialTank_C","Build_PipeStorageTank_C","Build_4IndustrialStorageTank_C"}
+local _containerTypes = {"Build_IndustrialTank_C","Build_PipeStorageTank_C"}
 
 --	Tanks		#
 --	Current		#
@@ -35,7 +35,8 @@ end
 --##### Initialize storage containers #####--
 function FetchContainers()
 	for _, containerType in pairs(_containerTypes) do
-		local containers = component.proxy(component.findComponent(findClass(containerType)))
+    local uuids = component.findComponent(findClass(containerType));
+		local containers = component.proxy()
 
 		if not containers then
 			error("ERROR: No containers connected.")
