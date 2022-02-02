@@ -10,7 +10,9 @@ maxCapacityLabel = null
 maxCapacity = null
 capacityPctLabel = null
 capacityPct = null
-local _containerTypes = {"BigStorage_C"}
+contentLabel = null
+content = null
+local _containerTypes = {"BigStorage_C","Build_IndustrialTank_C","Build_PipeStorageTank_C","Build_4IndustrialStorageTank_C"}
 
 --	Tanks		#
 --	Current		#
@@ -48,7 +50,7 @@ end
 function Initialise()
   -- Get the console panel
   panel = component.proxy("0A31490445A7E08A154E7994C4FE9D4E") -- Main Console
-	powerSwitch = component.proxy("887966684324EF71145799B32759F3C5")
+  powerSwitch = component.proxy("887966684324EF71145799B32759F3C5")
 	powerSwitch.isSwitchOn = false
 
   -- Get and Initialise displays
@@ -60,16 +62,20 @@ function Initialise()
   maxCapacity = GetPanelModule(5, 6, "")
   capacityPctLabel = GetPanelModule(0, 4, "Percent:")
   capacityPct = GetPanelModule(5, 4, "")
+  capacityPctLabel = GetPanelModule(0, 2, "Content:")
+  capacityPct = GetPanelModule(5, 2, "")
 end
 
 function Update()
   -- Runs periodically
 	local current = 0
 	local max = 0
+	local tankContent = ""
 
 	for _, v in ipairs(storageTanks) do
 		current = current + v.fluidContent
 		max = max + v.maxFluidContent
+		tankContent = v:getFluidType().type.name
 	end
 	local pct = (current * 100)/ max
 
@@ -82,6 +88,7 @@ function Update()
 	tankCount.text = tostring(#storageTanks)
 	capacity.text = Round(current, 0, 2)
 	maxCapacity.text = Round(max, 0, 0)
+	capacityPct.text = Round(pct, 0, 2)
 	capacityPct.text = Round(pct, 0, 2)
 end
 
