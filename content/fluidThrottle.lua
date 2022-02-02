@@ -35,8 +35,7 @@ end
 --##### Initialize storage containers #####--
 function FetchContainers()
 	for _, containerType in pairs(_containerTypes) do
-    local uuids = component.findComponent(findClass(containerType));
-		local containers = component.proxy()
+		local containers = component.proxy(component.findComponent(findClass(containerType)))
 
 		if not containers then
 			error("ERROR: No containers connected.")
