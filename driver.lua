@@ -1,4 +1,4 @@
-local path = "https://raw.githubusercontent.com/sriekeman/satisfactory/main"
+local path = "https://raw.githubusercontent.com/sriekeman/satisfactory/main/content"
 local script = "BLAHBLAHBLAH.lua"
 
 -- get internet card
