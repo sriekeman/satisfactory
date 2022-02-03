@@ -75,7 +75,11 @@ function Update()
 	for _, v in ipairs(storageTanks) do
 		current = current + v.fluidContent
 		max = max + v.maxFluidContent
-		tankContent = v:getFluidType().name
+		if (v:getFluidType()) then
+			tankContent = v:getFluidType().name
+		else
+			tankContent = "empty"
+		end
 	end
 	local pct = (current * 100)/ max
 
