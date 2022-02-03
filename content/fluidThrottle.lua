@@ -91,7 +91,7 @@ function Update()
 			--	flush 20% out of the system
 			local flush = max / 5
 			for _, v in ipairs(storageTanks) do
-				if (max > 0)
+				if (max > 0) then
 					max = max - math.min(max, v.fluidContent)
 					v:flush()
 				end
