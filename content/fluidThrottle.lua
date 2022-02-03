@@ -49,8 +49,8 @@ end
 
 function Initialise()
   -- Get the console panel
-  panel = component.proxy("0A31490445A7E08A154E7994C4FE9D4E") -- Main Console
-  powerSwitch = component.proxy("887966684324EF71145799B32759F3C5")
+  panel = component.proxy(component.findComponent(findClass("LargeControlPanel"))) -- Main Console
+  powerSwitch = component.proxy(component.findComponent(findClass("Build_PowerSwitch_C")))
 	powerSwitch.isSwitchOn = false
 
   -- Get and Initialise displays
