@@ -87,13 +87,12 @@ function Update()
 		powerSwitch.isSwitchOn = true
 	else
 		powerSwitch.isSwitchOn = false
-		if (pct > 80) then
-			--	flush 20% out of the system
-			local toFlush = max / 5
+		if (pct > 90) then
+			--	flush 10% out of the system
+			local toFlush = max / 10
 			for _, v in ipairs(storageTanks) do
 				if (toFlush > 0) then
 					toFlush = toFlush - math.min(toFlush, v.fluidContent)
-              print("dumping " .. tostring(v.fluidContent) .. ".  " .. tostring(toFlush) .. " left")
 					v:flush()
 				end
 			end
