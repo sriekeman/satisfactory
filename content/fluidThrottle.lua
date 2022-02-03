@@ -49,9 +49,9 @@ end
 
 function Initialise()
   -- Get the console panel
-  panel = component.proxy(component.findComponent(findClass("LargeControlPanel"))) -- Main Console
-  powerSwitch = component.proxy(component.findComponent(findClass("Build_PowerSwitch_C")))
-	powerSwitch.isSwitchOn = false
+  panel = component.proxy(component.findComponent(findClass("LargeControlPanel")))[1]
+  powerSwitch = component.proxy(component.findComponent(findClass("Build_PowerSwitch_C")))[1]
+  powerSwitch.isSwitchOn = false
 
   -- Get and Initialise displays
   tankCountLabel = GetPanelModule(0, 10, "Tank #:")
